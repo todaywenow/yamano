@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todaywenow</title>
+    <style>
+        /* 기본 리셋 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 1. 상단 헤더 */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .site-title {
+            /* 요청 조건: todaywenow, 15pt */
+            font-size: 15pt;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        /* 2. 메인 컨테이너 (좌측 메뉴 + 우측 컨텐츠) */
+        .main-container {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 3rem;
+        }
+
+        /* 좌측 메뉴 사이드바 */
+        .left-sidebar {
+            border-right: 1px solid #e2e8f0;
+            padding-right: 1.5rem;
+        }
+
+        .left-menu {
+            list-style: none;
+        }
+
+        .left-menu li a {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2563eb; /* 'blog' 메뉴 강조 색상 */
+            padding: 0.3rem 0;
+            transition: color 0.2s;
+        }
+
+        .left-menu li a:hover {
+            color: #1d4ed8;
+        }
+
+        /* 우측 블로그 포스트 리스트 */
+        .post-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #6366f1, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .post-excerpt {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 0.8rem;
+        }
+
+        /* 푸터 */
+        footer {
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        /* 모바일 반응형 대응 */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .left-sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                padding-right: 0;
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 헤더 -->
+    <header>
+        <div class="header-container">
+            <h1 class="site-title">todaywenow</h1>
+        </div>
+    </header>
+
+    <!-- 메인 컨테이너 -->
+    <div class="main-container">
+        
+        <!-- 좌측 사이드바 메뉴 (blog 메뉴 1개) -->
+        <aside class="left-sidebar">
+            <ul class="left-menu">
+                <li><a href="#blog">blog</a></li>
+            </ul>
+        </aside>
+
+        <!-- 우측 블로그 포스트 리스트 -->
+        <main class="post-list">
+
+            <!-- 포스트 카드 1 -->
+            <article class="post-card">
+                <div class="post-thumbnail">
+                    🖼️ 이미지 영역 1
+                </div>
+                <div class="post-content">
+                    <h2 class="post-title"><a href="#">첫 번째 블로그 게시글 제목</a></h2>
+                    <p class="post-excerpt">
+                        여기에 작성한 게시글의 요약 문장이 들어갑니다. 심플하고 깔끔한 블로그 레이아웃으로 글로 시선을 집중시킵니다.
+                    </p>
+                    <div class="post-meta">
+                        <span>2026.09.13</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 포스트 카드 2 -->
+            <article class="post-card">
+                <div class="post-thumbnail" style="background: linear-gradient(135deg, #06b6d4, #10b981);">
+                    🖼️ 이미지 영역 2
+                </div>
+                <div class="post-content">
+                    <h2 class="post-title"><a href="#">두 번째 블로그 게시글 제목</a></h2>
+                    <p class="post-excerpt">
+                        두 번째 포스트 내용 미리보기입니다. 리스트 형태로 깔끔하게 스크롤하며 읽을 수 있습니다.
+                    </p>
+                    <div class="post-meta">
+                        <span>2026.09.10</span>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2026 todaywenow. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
